@@ -1,17 +1,18 @@
 from PIL import Image
 from numpy import array, asarray, zeros
 
-image = Image.open("data/Porsche_072.jpg")
+image = Image.open("data/Porsche_072.jpg").convert('L')
 img_array = asarray(image)
 
-img_array = asarray([[0, 0, 0, 1, 1, 0, 0, 0],
-                     [0, 0, 0, 1, 1, 0, 0, 0],
-                     [0, 0, 0, 1, 1, 0, 0, 0],
-                     [0, 0, 0, 1, 1, 0, 0, 0],
-                     [0, 0, 0, 1, 1, 0, 0, 0],
-                     [0, 0, 0, 1, 1, 0, 0, 0],
-                     [0, 0, 0, 1, 1, 0, 0, 0],
-                     [0, 0, 0, 1, 1, 0, 0, 0]])
+# img_array = asarray([[0, 0, 0, 1, 1, 0, 0, 0],
+#                      [0, 0, 0, 1, 1, 0, 0, 0],
+#                      [0, 0, 0, 1, 1, 0, 0, 0],
+#                      [0, 0, 0, 1, 1, 0, 0, 0],
+#                      [0, 0, 0, 1, 1, 0, 0, 0],
+#                      [0, 0, 0, 1, 1, 0, 0, 0],
+#                      [0, 0, 0, 1, 1, 0, 0, 0],
+#                      [0, 0, 0, 1, 1, 0, 0, 0]])
+
 img_array_shape = img_array.shape
 
 filter = array([[0, 1, 0],
@@ -35,6 +36,7 @@ for i in range(img_array.shape[0]-filter_shape[0]+1):
 
         new_img_arr[i][j] = tmp
 
-print(new_img_arr)
+# print(new_img_arr)
 
-# image.show()
+new_img = Image.fromarray(new_img_arr)
+new_img.show()
